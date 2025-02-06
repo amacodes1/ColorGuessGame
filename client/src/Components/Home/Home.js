@@ -25,6 +25,11 @@ export default function Home() {
     } else {
       setStatus("Wrong! Try Again ❌");
     }
+
+    // Change the target color after each guess
+    setTimeout(() => {
+      startNewGame();
+    }, 1000); // Wait for a second before showing the next color
   };
 
   return (
@@ -59,7 +64,10 @@ export default function Home() {
       <button
         data-testid="newGameButton"
         className="new-game-button"
-        onClick={startNewGame}
+        onClick={() => {
+          setScore(0); // Reset the score
+          startNewGame(); // Start a new game
+        }}
       >
         New Game
       </button>
